@@ -6,3 +6,4 @@
   - The icons in the main bar and the file explorer require this
 - Download and install [Vim Plug](https://github.com/junegunn/vim-plug)
 - Run nvim +PlugInstall
+- Run :CocInstall @yaegassy/coc-intelephense to get php autocomplete

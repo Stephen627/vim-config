@@ -195,3 +195,4 @@ lua << EOF
     -- refer to the configuration section below
   }
 EOF
+

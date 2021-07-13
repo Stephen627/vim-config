@@ -9,15 +9,8 @@ Plug 'mattn/emmet-vim'
 
 " Autocomplete
 " https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
-if has('nvim') && has('python3')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'Shougo/denite.nvim',   { 'do': ':UpdateRemotePlugins' }
-    Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
-    let g:deoplete#enable_at_startup = 1
-
-    " Autocomplete languages
-    Plug 'deoplete-plugins/deoplete-tag'                              " Tags
-    Plug 'ervandew/supertab'
+if has('nvim')
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
 " File Explorer
@@ -34,7 +27,7 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 set termguicolors
 
 " Visual
-"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'projekt0n/github-nvim-theme'
 
 Plug 'hoob3rt/lualine.nvim'
