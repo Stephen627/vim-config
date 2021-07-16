@@ -4,7 +4,9 @@ filetype off                  " required
 let $VIMHOME = expand('<sfile>:p:h:h') . '/nvim'
 
 function IncludeFile(file)
-    execute "source $VIMHOME/" . a:file
+    if filereadable($VIMHOME . '/' . a:file)
+        execute "source $VIMHOME/" . a:file
+    endif
 endfunction
 
 :call IncludeFile('plugins.vim')
@@ -69,7 +71,7 @@ let $LANG='en'
 set langmenu='en'
 set ruler
 set cmdheight=1
-set textwidth=90
+set textwidth=85
 set colorcolumn=+1
 
 set hid
@@ -208,4 +210,7 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+
+:call IncludeFile('override.vim')
 

@@ -1,6 +1,16 @@
 {
-   "intelephense.stubs": [
-       "apache",
+    "languageserver": {
+        "intelephense": {
+            "command": "intelephense",
+            "args": ["--stdio"],
+            "filetypes": ["php"],
+            "initializationOptions": {
+                "storagePath": "/tmp/intelephense"
+            }
+        }
+    },
+    "intelephense.stubs": [
+        "apache",
         "bcmath",
         "bz2",
         "calendar",
@@ -72,5 +82,5 @@
         "zip",
         "zlib",
         "wordpress"
-   ]
+    ]
 }
