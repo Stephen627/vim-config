@@ -4,7 +4,9 @@ filetype off                  " required
 let $VIMHOME = expand('<sfile>:p:h:h') . '/nvim'
 
 function IncludeFile(file)
-    execute "source $VIMHOME/" . a:file
+    if filereadable($VIMHOME . '/' . a:file)
+        execute "source $VIMHOME/" . a:file
+    endif
 endfunction
 
 :call IncludeFile('plugins.vim')
@@ -195,4 +197,6 @@ lua << EOF
     -- refer to the configuration section below
   }
 EOF
+
+:call IncludeFile('override.vim')
 
