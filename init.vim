@@ -165,7 +165,21 @@ nnoremap <leader>reactf :call ReplaceTemplatePlaceholders("$VIMHOME/templates/re
 " => Plugin Setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:coc_global_extensions = [ 'coc-omnisharp', '@yaegassy/coc-intelephense' ]
+" In order
+" -> C#
+" -> PHP
+" -> JS/TS
+" -> CSS/SASS/LESS
+" -> JSON
+" -> HTML
+let g:coc_global_extensions = [
+    \ 'coc-omnisharp',
+    \ '@yaegassy/coc-intelephense',
+    \ 'coc-tsserver',
+    \ 'coc-css',
+    \ 'coc-json',
+    \ 'coc-html'
+\ ]
 
 lua << EOF
     require("github-theme").setup({
