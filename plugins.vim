@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 " Plugins
 
 " Functional
-Plug 'scrooloose/syntastic'
 Plug 'mattn/emmet-vim'
 " Plug 'joonty/vdebug'
 
