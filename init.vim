@@ -163,6 +163,8 @@ nnoremap <leader>reactf :call ReplaceTemplatePlaceholders("$VIMHOME/templates/re
 " => Plugin Setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let g:coc_global_extensions = [ 'coc-omnisharp', '@yaegassy/coc-intelephense' ]
+
 lua << EOF
     require("github-theme").setup({
         commentStyle = "NONE",
@@ -195,4 +197,15 @@ lua << EOF
     -- refer to the configuration section below
   }
 EOF
+
+lua << EOF
+require('telescope').setup{
+    file_ignore_patterns = { '%.git/.*' }
+}
+EOF
+
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
