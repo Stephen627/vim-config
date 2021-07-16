@@ -69,7 +69,7 @@ let $LANG='en'
 set langmenu='en'
 set ruler
 set cmdheight=1
-set textwidth=90
+set textwidth=85
 set colorcolumn=+1
 
 set hid
