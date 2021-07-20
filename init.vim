@@ -204,7 +204,9 @@ EOF
 
 lua << EOF
 require('telescope').setup{
-    file_ignore_patterns = { '%.git/.*' }
+    defaults = {
+        file_ignore_patterns = { '.git', 'node_modules', 'vendor', 'logs' }
+    }
 }
 EOF
 
