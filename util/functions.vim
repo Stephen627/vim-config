@@ -18,6 +18,37 @@ function ReplaceTemplatePlaceholders(templateFile, toReplace)
     :1
 endfunction
 
+function ReplacePHPTemplatePlaceholders(templateFile)
+    if !filereadable($PWD . '/composer.json')
+        return
+    endif
+
+    let replacements = {}
+    let composerFile = json_decode(readfile($PWD . '/composer.json'))
+    let autoload = composerFile['autoload']['psr-4']
+    let filePath = expand('%:r')
+    let fileName = expand('%:t:r')
+    let replacements.name = fileName
+
+    for key in keys(autoload)
+        " not the correct namespace
+        if filePath !~ '^' . autoload[key]
+            continue
+        endif
+
+        let path = substitute(filePath, autoload[key] . '/', '', '') " removing initial path from string (e.g. src/)
+        let path = substitute(path, fileName . '$', '', '') " removing file name from end of path
+        let path = split(path, '/') " split the path to get ready to join with the initial namespace
+        let key = join(split(key, '\') + path, '\\')
+        let replacements.namespace = key
+        break
+    endfor
+
+
+    execute "-1read " . a:templateFile
+    :call ReplaceParameters(replacements)
+endfunction
+
 " Replaces all keys with values in the given dictionary
 " @param dictionary replace - the key value paris in template in the current file
 function ReplaceParameters(replace)
