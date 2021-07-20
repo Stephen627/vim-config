@@ -148,6 +148,8 @@ nmap <C-h> gT
 nnoremap <leader>html :-1read $VIMHOME/templates/skeleton.html<CR>3jwf>a
 nnoremap <leader>reactc :call ReplaceTemplatePlaceholders("$VIMHOME/templates/react-class.js", {'name': 'Enter the name of the class'})<CR>
 nnoremap <leader>reactf :call ReplaceTemplatePlaceholders("$VIMHOME/templates/react-function.js", {'name': 'Enter the name of the function'})<CR>
+nnoremap <leader>phpc :call ReplacePHPTemplatePlaceholders("$VIMHOME/templates/php-class.php")<CR>
+nnoremap <leader>phpf :call ReplaceTemplatePlaceholders("$VIMHOME/templates/php-class-no-namespace.php", {'name': 'Enter the name of the class' })<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Setup
