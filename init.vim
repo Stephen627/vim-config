@@ -17,7 +17,7 @@ endfunction
 " => Setting up editor options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let mapleader = '~'
+let mapleader = ' '
 
 " Setting up searching
 set smartcase
@@ -100,18 +100,6 @@ set tags+=./tags
 set completeopt=longest,menuone
 
 map <silent> <leader><cr> :noh<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Map auto complete of (, ", ', [
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $5 ''<esc>i
-inoremap $6 ""<esc>i
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
