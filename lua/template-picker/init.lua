@@ -29,14 +29,10 @@ function templatePicker.setup()
         padding = { 0, 0, 0, 0 },
         minheight =  20,
         minwidth = 40,
+        borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
         title = 'Please select a template to use',
         callback = templatePicker.onSelect
     })
-    local popup_bufnr = a.nvim_win_get_buf(popup_win)
-
-    templatePicker.popup_win = popup_win
-    templatePicker.popup_opts = popup_bufnr
-
     a.nvim_win_set_option(popup_win, "wrap", false)
 end
 
