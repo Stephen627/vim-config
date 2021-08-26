@@ -181,6 +181,8 @@ let g:coc_global_extensions = [
     \ 'coc-html'
 \ ]
 
+nmap <silent> gd :call CocAction('jumpDefinition', 'tab drop') <CR>
+
 lua << EOF
     require("github-theme").setup({
         commentStyle = "NONE",
