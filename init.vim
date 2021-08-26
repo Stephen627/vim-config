@@ -145,11 +145,21 @@ nmap <C-h> gT
 " => Templates
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-nnoremap <leader>html :-1read $VIMHOME/templates/skeleton.html<CR>3jwf>a
-nnoremap <leader>reactc :call ReplaceTemplatePlaceholders("$VIMHOME/templates/react-class.js", {'name': 'Enter the name of the class'})<CR>
-nnoremap <leader>reactf :call ReplaceTemplatePlaceholders("$VIMHOME/templates/react-function.js", {'name': 'Enter the name of the function'})<CR>
-nnoremap <leader>phpc :call ReplacePHPTemplatePlaceholders("$VIMHOME/templates/php-class.php")<CR>
-nnoremap <leader>phpf :call ReplaceTemplatePlaceholders("$VIMHOME/templates/php-class-no-namespace.php", {'name': 'Enter the name of the class' })<CR>
+function ReactClass()
+    :call ReplaceTemplatePlaceholders("$VIMHOME/templates/react-class.js", {'name': 'Enter the name of the class'})
+endfunction
+function ReactFunction()
+    :call ReplaceTemplatePlaceholders("$VIMHOME/templates/react-function.js", {'name': 'Enter the name of the function'})
+endfunction
+function PHPClass()
+    :call ReplacePHPTemplatePlaceholders("$VIMHOME/templates/php-class.php")
+endfunction
+function PHPFunction()
+    :call ReplaceTemplatePlaceholders("$VIMHOME/templates/php-class-no-namespace.php", {'name': 'Enter the name of the class' })
+endfunction
+function HTML()
+    :-1read $VIMHOME/templates/skeleton.html
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Setup
@@ -216,6 +226,12 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <leader>tt :call OpenTemplatePopup()<cr>
+
+function OpenTemplatePopup()
+    lua require('template-picker.init').setup()
+endfunction
 
 
 :call IncludeFile('override.vim')
