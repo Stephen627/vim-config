@@ -20,6 +20,15 @@ function templatePicker.setup()
         "PHP function",
         "HTML",
     }, {
+        col = 5,
+        line = 2,
+        filtermode = 'n',
+        posinvert = false,
+        zindex = 200,
+        border = { 1, 1, 1, 1 },
+        padding = { 0, 0, 0, 0 },
+        minheight =  20,
+        minwidth = 40,
         title = 'Please select a template to use',
         callback = templatePicker.onSelect
     })
