@@ -20,11 +20,16 @@ endfunction
 
 function ReplacePHPTemplatePlaceholders(templateFile)
     if !filereadable($PWD . '/composer.json')
+        :call ReplaceTemplatePlaceholders(a:templateFile, { 'namespace': 'Enter the namespace of the class', 'name': 'Enter the name of the class' })
         return
     endif
 
     let replacements = {}
     let composerFile = json_decode(readfile($PWD . '/composer.json'))
+    if !composerFile['autoload'] || !composerFile['autoload']['psr-4']
+        :call ReplaceTemplatePlaceholders(a:templateFile, { 'namespace': 'Enter the namespace of the class', 'name': 'Enter the name of the class' })
+        return
+    endif
     let autoload = composerFile['autoload']['psr-4']
     let filePath = expand('%:r')
     let fileName = expand('%:t:r')
