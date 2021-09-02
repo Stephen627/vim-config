@@ -4,8 +4,8 @@ local a = vim.api
 
 function templatePicker.onSelect(id, option)
     a.nvim_command('wincmd p')
-    if     option == 'React class' then a.nvim_command('call ReactClass()')
-    elseif option == 'React function' then a.nvim_command('call ReactFunction()')
+    if     option == 'React TS' then a.nvim_command('call ReactTypescriptFunction()')
+    elseif option == 'React JS' then a.nvim_command('call ReactFunction()')
     elseif option == 'PHP class' then a.nvim_command('call PHPClass()')
     elseif option == 'PHP function' then a.nvim_command('call PHPFunction()')
     elseif option == 'HTML' then a.nvim_command('call HTML()')
@@ -14,8 +14,8 @@ end
 
 function templatePicker.setup()
     local popup_win, popup_opts = popup.create({
-        "React class",
-        "React function",
+        "React TS",
+        "React JS",
         "PHP class",
         "PHP function",
         "HTML",

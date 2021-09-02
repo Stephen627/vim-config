@@ -1,5 +1,5 @@
-function ReactClass()
-    :call ReplaceTemplatePlaceholders("$VIMHOME/templates/react-class.js", {'name': 'Enter the name of the class'})
+function ReactTypescriptFunction()
+    :call ReplaceTemplatePlaceholders("$VIMHOME/templates/react-typescript.tsx", {'name': 'Enter the name of the function'})
 endfunction
 function ReactFunction()
     :call ReplaceTemplatePlaceholders("$VIMHOME/templates/react-function.js", {'name': 'Enter the name of the function'})
