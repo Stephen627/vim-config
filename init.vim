@@ -19,7 +19,8 @@ endfunction
 let mapleader = ' '
 
 :call IncludeFile('util/util.vim')
-:call IncludeFile('coc.vim')
+":call IncludeFile('coc.vim')
+:call IncludeFile('lsp.vim')
 :call IncludeFile('templates.vim')
 
 " Setting up searching
@@ -165,12 +166,15 @@ require('telescope').setup{
 }
 EOF
 
+let g:ale_disable_lsp = 1
+
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>xx <cmd>TroubleToggle loclist<cr>
 
 
 :call IncludeFile('override.vim')

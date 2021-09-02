@@ -6,3 +6,5 @@
   - The icons in the main bar and the file explorer require this
 - Download and install [Vim Plug](https://github.com/junegunn/vim-plug)
 - Run nvim +PlugInstall
+- npm i -g intelephense
+- npm i -g tsserver typescript
