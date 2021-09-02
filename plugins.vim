@@ -15,7 +15,6 @@ Plug 'mattn/emmet-vim'
 " https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'ervandew/supertab'
 endif
 
 " File Explorer
