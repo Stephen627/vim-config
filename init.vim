@@ -28,17 +28,7 @@ set incsearch
 " Setting the correct color scheme
 syntax enable
 set background=dark
-
-try
-    colorscheme PaperColor
-catch
-endtry
-
-if has("gui_running")
-    if has("gui_gtk2")
-        set guifont=Monospace\ 9
-    endif
-endif
+set termguicolors
 
 " buffer opts
 set autoread
@@ -48,7 +38,6 @@ set autowrite
 set number
 set relativenumber
 set title
-set tags+=./.vim/tags
 
 " tab opts
 set autoindent
@@ -58,6 +47,10 @@ set ts=4 sts=4 sw=4
 
 autocmd Filetype yaml       setlocal ts=2 sts=2 sw=2
 autocmd Filetype html       setlocal ts=2 sts=2 sw=2
+autocmd Filetype js         setlocal ts=2 sts=2 sw=2
+autocmd Filetype ts         setlocal ts=2 sts=2 sw=2
+autocmd Filetype css        setlocal ts=2 sts=2 sw=2
+autocmd Filetype scss       setlocal ts=2 sts=2 sw=2
 
 set history=400
 
@@ -67,8 +60,6 @@ set wildmenu
 
 set clipboard=unnamed
 set so=7
-let $LANG='en'
-set langmenu='en'
 set ruler
 set cmdheight=1
 set textwidth=85
@@ -96,24 +87,15 @@ set nobackup
 set nowb
 set noswapfile
 
-set tags+=./tags
-set completeopt=longest,menuone
-
 map <silent> <leader><cr> :noh<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Pressing ,ss will toggle and untoggle spell checking
+let $LANG='en'
+set langmenu='en'
 map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
 
 """"""""""""""""""""""""""""""
 " => Markdown
@@ -127,8 +109,8 @@ let vim_markdown_folding_disabled = 1
 
 set pastetoggle=<F4>
 
-" Common remappings
-" for common :w mis-spellings
+" Common re-mappings
+" for common :w miss-spellings
 :command WQ wq
 :command Wq wq
 :command W w
@@ -209,14 +191,6 @@ lua << EOF
 EOF
 
 lua << EOF
-  require("trouble").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
-EOF
-
-lua << EOF
 require('telescope').setup{
     defaults = {
         file_ignore_patterns = { '.git', 'node_modules', 'vendor', 'logs' }
@@ -228,6 +202,8 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <C-n> :NvimTreeToggle<CR>
 
 nnoremap <leader>tt :call OpenTemplatePopup()<cr>
 
