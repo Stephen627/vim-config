@@ -1,8 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
 " Possible new plugins
-" https://github.com/folke/trouble.nvim
-" https://github.com/glepnir/lspsaga.nvim
 " https://github.com/mfussenegger/nvim-dap
 " https://github.com/nvim-treesitter/nvim-treesitter
 
@@ -11,19 +9,21 @@ call plug#begin('~/.vim/plugged')
 " Functional
 Plug 'mattn/emmet-vim'
 
-" Autocomplete
-" https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
 if has('nvim')
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/nvim-compe'
+    Plug 'glepnir/lspsaga.nvim'
+    Plug 'folke/lsp-colors.nvim'
+    Plug 'folke/trouble.nvim' 
 endif
 
 " File Explorer
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
 let g:nvim_tree_ignore = [ '.git', 'node_modules', 'vendor', '.cache' ]
 
 " Visual
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'projekt0n/github-nvim-theme'
 
 Plug 'nvim-lua/popup.nvim'
