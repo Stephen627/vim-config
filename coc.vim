@@ -7,7 +7,7 @@
 " -> HTML
 let g:coc_global_extensions = [
     \ 'coc-omnisharp',
-    \ '@yaegassy/coc-intelephense',
+    \ 'coc-phpls',
     \ 'coc-tsserver',
     \ 'coc-css',
     \ 'coc-json',

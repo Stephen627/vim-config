@@ -1,14 +1,5 @@
 {
-    "languageserver": {
-        "intelephense": {
-            "command": "intelephense",
-            "args": ["--stdio"],
-            "filetypes": ["php"],
-            "initializationOptions": {
-                "storagePath": "/tmp/intelephense"
-            }
-        }
-    },
+    "intelephense.progress.enable": false,
     "intelephense.stubs": [
         "apache",
         "bcmath",
