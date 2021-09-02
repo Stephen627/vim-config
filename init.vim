@@ -48,12 +48,14 @@ set smartindent
 set expandtab
 set ts=4 sts=4 sw=4
 
-autocmd Filetype yaml       setlocal ts=2 sts=2 sw=2
-autocmd Filetype html       setlocal ts=2 sts=2 sw=2
-autocmd Filetype js         setlocal ts=2 sts=2 sw=2
-autocmd Filetype ts         setlocal ts=2 sts=2 sw=2
-autocmd Filetype css        setlocal ts=2 sts=2 sw=2
-autocmd Filetype scss       setlocal ts=2 sts=2 sw=2
+autocmd Filetype yaml            setlocal ts=2 sts=2 sw=2
+autocmd Filetype html            setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript      setlocal ts=2 sts=2 sw=2
+autocmd Filetype typescript      setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascriptreact setlocal ts=2 sts=2 sw=2
+autocmd Filetype typescriptreact setlocal ts=2 sts=2 sw=2
+autocmd Filetype css             setlocal ts=2 sts=2 sw=2
+autocmd Filetype scss            setlocal ts=2 sts=2 sw=2
 
 set history=400
 
