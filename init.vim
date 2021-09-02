@@ -10,7 +10,6 @@ function IncludeFile(file)
 endfunction
 
 :call IncludeFile('plugins.vim')
-:call IncludeFile('util/util.vim')
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -18,6 +17,10 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader = ' '
+
+:call IncludeFile('util/util.vim')
+:call IncludeFile('coc.vim')
+:call IncludeFile('templates.vim')
 
 " Setting up searching
 set smartcase
@@ -124,46 +127,8 @@ nmap <C-l> gt
 nmap <C-h> gT
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Templates
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-function ReactClass()
-    :call ReplaceTemplatePlaceholders("$VIMHOME/templates/react-class.js", {'name': 'Enter the name of the class'})
-endfunction
-function ReactFunction()
-    :call ReplaceTemplatePlaceholders("$VIMHOME/templates/react-function.js", {'name': 'Enter the name of the function'})
-endfunction
-function PHPClass()
-    :call ReplacePHPTemplatePlaceholders("$VIMHOME/templates/php-class.php")
-endfunction
-function PHPFunction()
-    :call ReplaceTemplatePlaceholders("$VIMHOME/templates/php-class-no-namespace.php", {'name': 'Enter the name of the class' })
-endfunction
-function HTML()
-    :-1read $VIMHOME/templates/skeleton.html
-endfunction
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" In order
-" -> C#
-" -> PHP
-" -> JS/TS
-" -> CSS/SASS/LESS
-" -> JSON
-" -> HTML
-let g:coc_global_extensions = [
-    \ 'coc-omnisharp',
-    \ '@yaegassy/coc-intelephense',
-    \ 'coc-tsserver',
-    \ 'coc-css',
-    \ 'coc-json',
-    \ 'coc-html'
-\ ]
-
-nmap <silent> gd :call CocAction('jumpDefinition', 'tab drop') <CR>
 
 lua << EOF
     require("github-theme").setup({
@@ -204,12 +169,6 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 nnoremap <C-n> :NvimTreeToggle<CR>
-
-nnoremap <leader>tt :call OpenTemplatePopup()<cr>
-
-function OpenTemplatePopup()
-    lua require('template-picker.init').setup()
-endfunction
 
 
 :call IncludeFile('override.vim')
