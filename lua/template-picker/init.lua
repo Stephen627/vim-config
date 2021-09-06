@@ -1,4 +1,5 @@
 local popup = require "popup"
+local utils = require "utils"
 local templatePicker = {}
 local a = vim.api
 
@@ -7,7 +8,7 @@ vim.g.vimhome = '~/.config/nvim/'
 vim.api.nvim_set_keymap('n', '<leader>tt', ':lua require("template-picker").open()<cr>', { noremap = true  })
 
 function templatePicker.ReplacePHPTemplatePlaceholders(templatePath)
-    if not templatePicker.fileExists(vim.cmd('pwd') .. '/composer.json') then
+    if not utils.fileExists(vim.cmd('pwd') .. '/composer.json') then
         templatePicker.ReplaceTemplatePlaceholders(templatePath, {
             namespace = 'Enter the namespace of the class',
             name = 'Enter the name of the class'
@@ -74,11 +75,6 @@ function templatePicker.replaceParameters(replace)
   for k,v in pairs(replace) do
     a.nvim_command('execute "%s/{' .. k .. '}/' .. v .. '/g"')
   end
-end
-
-function templatePicker.fileExists(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
 end
 
 function templatePicker.onSelect(id, option)
