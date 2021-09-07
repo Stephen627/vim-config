@@ -1,2 +1,3 @@
-override.lua
+lua/lifecycle/override.lua
+lua/lifecycle/setup.lua
 plugin

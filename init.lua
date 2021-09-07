@@ -1,3 +1,9 @@
+-- Ignore errors when trying to import the setup file
+function includeSetup ()
+    require 'lifecycle.setup'
+end
+pcall(includeSetup)
+
 require 'general'
 require 'template-picker'
 require 'plugins'
@@ -14,6 +20,6 @@ require 'plugins.nvim-tree'
 
 -- Ignore errors when trying to import the override file
 function includeOverride ()
-  require 'override'
+    require 'lifecycle.override'
 end
 pcall(includeOverride)
