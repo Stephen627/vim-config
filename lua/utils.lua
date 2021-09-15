@@ -19,9 +19,9 @@ function utils.merge(mergee, merger)
         if type(mergeeValue) == "table" and type(mergerValue) == "table" then
             if utils.isArray(mergeeValue) and utils.isArray(mergerValue) then
                 for k,v in pairs(mergerValue) do
-                    local count = table.getn(mergeeValue)
-                    mergeeValue[count] = v
+                    table.insert(mergeeValue, v)
                 end
+                merged[mergerKey] = mergeeValue
             else
                 merged[mergerKey] = utils.merge(mergeeValue, mergerValue)
             end
