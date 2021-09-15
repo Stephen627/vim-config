@@ -25,6 +25,7 @@ return require('packer').startup(function()
     use 'nvim-telescope/telescope.nvim'
     use 'hoob3rt/lualine.nvim'
     use 'lewis6991/gitsigns.nvim'
+    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
