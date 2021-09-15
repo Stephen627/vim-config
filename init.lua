@@ -16,6 +16,7 @@ require 'plugins.lualine'
 require 'plugins.telescope'
 require 'plugins.trouble'
 require 'plugins.nvim-tree'
+require 'plugins.bufferline'
 
 
 -- Ignore errors when trying to import the override file
