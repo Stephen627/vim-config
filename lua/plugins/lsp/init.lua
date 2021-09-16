@@ -21,3 +21,4 @@ vim.api.nvim_set_keymap('n', '<leader>gd', ':Lspsaga preview_definition<cr>', { 
 
 require 'plugins.lsp.php'
 require 'plugins.lsp.js'
+require 'plugins.lsp.css'
