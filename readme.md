@@ -8,3 +8,4 @@
 - Run nvim +PackerInstall
 - npm i -g intelephense
 - npm i -g tsserver typescript
+- npm i -g vscode-langservers-extracted
