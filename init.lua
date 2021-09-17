@@ -17,6 +17,7 @@ require 'plugins.telescope'
 require 'plugins.trouble'
 require 'plugins.nvim-tree'
 require 'plugins.bufferline'
+require 'plugins.lsp_signature'
 
 
 -- Ignore errors when trying to import the override file
