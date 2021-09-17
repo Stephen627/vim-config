@@ -2,7 +2,11 @@
 local utils = require 'utils'
 local projectSettings = require 'settings'
 
-local config = {}
+local config = {
+    on_attach = function (client, bufnr)
+        require'lsp_signature'.on_attach()
+    end
+}
 
 if globalSettings and globalSettings.lsp and globalSettings.lsp.tsserver then
     config = utils.merge(config, globalSettings.lsp.tsserver)
