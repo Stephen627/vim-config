@@ -63,6 +63,7 @@ function templatePicker.ReplaceTemplatePlaceholders(templatePath, questions)
   vim.fn.inputsave()
   for k,v in pairs(questions) do
     replacements[k] = vim.fn.input(v .. ':')
+    replacements[k] = string.gsub(replacements[k], '\\', '\\\\\\\\')
   end
   vim.fn.inputrestore()
 
