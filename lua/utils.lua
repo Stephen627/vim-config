@@ -6,6 +6,16 @@ function utils.fileExists(name)
    if f~=nil then io.close(f) return true else return false end
 end
 
+function utils.map(tbl, func)
+    local t = {}
+    local index = 0
+    for k,v in pairs(tbl) do
+        table.insert(t, func(v))
+    end
+
+    return t
+end
+
 function utils.merge(mergee, merger)
     local merged = {}
 

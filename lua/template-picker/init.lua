@@ -1,12 +1,53 @@
 local popup = require "popup"
 local utils = require "utils"
-local templatePicker = {}
+local projectSettings = require 'settings'
 local a = vim.api
 
-vim.g.vimhome = '~/.config/nvim/'
+local config = {
+    ReactTS = {
+        name = 'React TS',
+        path = vim.fn.stdpath('config') .. '/templates/react-typescript.tsx',
+        questions = {
+            name = 'Enter the name of the function'
+        }
+    },
+    ReactJS = {
+        name = 'React JS',
+        path = vim.fn.stdpath('config') .. '/tmeplate/react-function.js',
+        questions = {
+            name = 'Enter the name of the function'
+        }
+    },
+    PHPClass = {
+        name = 'PHP Class',
+        path = vim.fn.stdpath('config') .. '/templates/php-class.php',
+        phpClass = true
+    },
+    PHPfunction = {
+        name = 'PHP function',
+        path = vim.fn.stdpath('config') .. '/template/php-class-no-namespace.php',
+        questions = {
+            name = 'Enter the name of the class'
+        }
+    },
+    HTML = {
+        name = 'HTML',
+        path = vim.fn.stdpath('config') .. '/template/skeleton.html',
+        questions = {}
+    }
+}
+
+if globalSettings and globalSettings.templates then
+    config = utils.merge(config, globalSettings.templates)
+end
+
+if projectSettings and projectSettings.templates then
+    config = utils.merge(config, projectSettings.templates)
+end
 
 vim.api.nvim_set_keymap('n', '<leader>tt', ':lua require("template-picker").open()<cr>', { noremap = true  })
 
+local templatePicker = {}
 function templatePicker.ReplacePHPTemplatePlaceholders(templatePath)
     if not utils.fileExists(vim.cmd('pwd') .. '/composer.json') then
         templatePicker.ReplaceTemplatePlaceholders(templatePath, {
@@ -80,38 +121,24 @@ end
 
 function templatePicker.onSelect(id, option)
     a.nvim_command('wincmd p')
-    if     option == 'React TS' then
-        templatePicker.ReplaceTemplatePlaceholders(
-            vim.g.vimhome .. '/templates/react-typescript.tsx',
-            { name = 'Enter the name of the function' }
-        )
-    elseif option == 'React JS' then 
-        templatePicker.ReplaceTemplatePlaceholders(
-            vim.g.vimhome .. '/templates/react-function.js',
-            { name = 'Enter the name of the function' }
-        )
-    elseif option == 'PHP class' then
-        templatePicker.ReplacePHPTemplatePlaceholders(
-            vim.g.vimhome .. '/templates/php-class.php'
-        )
-    elseif option == 'PHP function' then
-        templatePicker.ReplaceTemplatePlaceholders(
-            vim.g.vimhome .. '/templates/php-class-no-namespace.php',
-            { name = 'Enter the name of the class' }
-        )
-    elseif option == 'HTML' then
-        vim.api.nvim_command('-1read ' .. vim.g.vimhome .. '/templates/skeleton.html')
+
+    for k,v in pairs(config) do
+        if (v.name == option) then
+            if (v.phpClass) then
+                templatePicker.ReplacePHPTemplatePlaceholders(v.path)
+            else
+                templatePicker.ReplaceTemplatePlaceholders(
+                    v.path,
+                    v.questions
+                )
+            end
+        end
     end
 end
 
 function templatePicker.open()
-    local popup_win, popup_opts = popup.create({
-        "React TS",
-        "React JS",
-        "PHP class",
-        "PHP function",
-        "HTML",
-    }, {
+    local options = utils.map(config, function(item) return item.name end)
+    local popup_win, popup_opts = popup.create(options, {
         col = 5,
         line = 2,
         filtermode = 'n',
