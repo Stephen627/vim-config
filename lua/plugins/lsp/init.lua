@@ -14,7 +14,7 @@ vim.api.nvim_set_keymap('n', ' <C-p>', '<cmd>lua vim.lsp.diagnostic.goto_next()<
 
 vim.api.nvim_set_keymap('n', '<leader>ac', ':Lspsaga code_action<cr>', { noremap = true })
 vim.api.nvim_set_keymap('v', '<leader>ac', ':<C-U>Lspsaga range_code_action<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'K', ':Lspsaga hover_doc<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gs', ':Lspsaga signature_help<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>rn', ':Lspsaga rename<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Lspsaga preview_definition<cr>', { noremap = true })
