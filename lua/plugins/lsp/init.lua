@@ -7,10 +7,10 @@ vim.api.nvim_set_keymap('n', ' <C-n>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<
 vim.api.nvim_set_keymap('n', ' <C-p>', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', { noremap = true })
 
 -- auto-format
-vim.api.nvim_command('autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)')
-vim.api.nvim_command('autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)')
-vim.api.nvim_command('autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)')
-vim.api.nvim_command('autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 100)')
+--vim.api.nvim_command('autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)')
+--vim.api.nvim_command('autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)')
+--vim.api.nvim_command('autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)')
+--vim.api.nvim_command('autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 100)')
 
 vim.api.nvim_set_keymap('n', '<leader>ac', ':Lspsaga code_action<cr>', { noremap = true })
 vim.api.nvim_set_keymap('v', '<leader>ac', ':<C-U>Lspsaga range_code_action<cr>', { noremap = true })
