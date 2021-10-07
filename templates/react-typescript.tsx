@@ -1,14 +1,12 @@
-import * as React from 'react';
+import React from 'react'
 
 export interface Props {
 
 }
 
-const {name} => (props: Props) => {
-  return <div>
-    Hello World
-  </div>;
+const {name}: React.FunctionComponent<Props> = (props: Props) => {
+  return <div></div>
 }
 
-export default {name};
+export default {name}
 
