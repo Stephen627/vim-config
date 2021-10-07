@@ -1,3 +1,4 @@
 lua/lifecycle/override.lua
 lua/lifecycle/setup.lua
 plugin
+vendor
