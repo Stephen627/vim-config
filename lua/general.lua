@@ -1,6 +1,5 @@
 vim.g.mapleader = ' '
 
-
 -- Setting up searching
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
@@ -11,6 +10,10 @@ vim.opt.incsearch = true
 vim.g.syntax = 'enable'
 vim.opt.background = 'dark'
 vim.opt.termguicolors = true
+
+-- Remap q to bd to remove buffer
+vim.api.nvim_command('cnoreabbrev wq w<bar>bd')
+vim.api.nvim_command('cnoreabbrev q bd')
 
 -- buffer opts
 vim.opt.autoread = true
