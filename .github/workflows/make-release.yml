@@ -13,4 +13,4 @@ jobs:
         with:
           neovim: true
           version: stable
-      - run: nvim -u ./lua/plugins/init.lua --headless +PackerInstall
+      - run: nvim -u ./lua/plugins/init.lua --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
