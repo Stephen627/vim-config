@@ -15,14 +15,31 @@ jobs:
           version: stable
       - name: Build NeoVim
         run: nvim -u ./lua/plugins/init.lua --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+      - name: Wait for the build
+        run: sleep 30s
+        shell: bash
       - name: Compress NeoVim
         run: tar -zcvf neovim.tar.gz ./
+      - uses: octokit/request-action@v2.x
+        id: get_latest_release
+        with:
+          route: GET /repos/:repository/releases/latest
+          repository: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: get upload url
+        id: get_upload_url
+        run: |
+          url=$(echo "$response" | jq -r '.upload_url')
+          echo "::set-output name=url::$url"
+        env: 
+            response:  ${{ steps.get_latest_release.outputs.data }}
       - name: Upload release files
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url:  ${{steps.get_upload_url.outputs.url}}
           asset_path: ./neovim.tar.gz
           asset_name: neovim.tar.gz
           asset_content_type: application/gzip
