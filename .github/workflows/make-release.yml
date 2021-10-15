@@ -1,11 +1,11 @@
 name: Make Release
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - created
 
 jobs:
-  build:
+  build_and_release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -13,4 +13,16 @@ jobs:
         with:
           neovim: true
           version: stable
-      - run: nvim -u ./lua/plugins/init.lua --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+      - name: Build NeoVim
+        run: nvim -u ./lua/plugins/init.lua --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+      - name: Compress NeoVim
+        run: tar -zcvf neovim.tar.gz ./
+      - name: Upload release files
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./neovim.tar.gz
+          asset_name: neovim.tar.gz
+          asset_content_type: application/gzip
