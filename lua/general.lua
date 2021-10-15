@@ -47,7 +47,7 @@ vim.opt.clipboard = 'unnamed'
 vim.opt.so = 7
 vim.opt.ruler = true
 vim.opt.cmdheight = 1
-vim.opt.textwidth = 85
+vim.opt.textwidth = 80
 vim.opt.colorcolumn = '+1'
 
 
