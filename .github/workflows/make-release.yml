@@ -19,7 +19,7 @@ jobs:
         run: sleep 30s
         shell: bash
       - name: Compress NeoVim
-        run: tar -zcvf neovim.tar.gz ./
+        run: tar --exclude='./.git' --exclude='./github' -zcvf neovim.tar.gz ./
       - uses: octokit/request-action@v2.x
         id: get_latest_release
         with:
