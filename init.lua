@@ -17,6 +17,7 @@ require 'plugins.trouble'
 require 'plugins.nvim-tree'
 require 'plugins.bufferline'
 require 'plugins.lsp_signature'
+require 'plugins.dap'
 require 'template-picker'
 
 
