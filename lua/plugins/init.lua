@@ -29,6 +29,8 @@ packer.init({
 
 return packer.startup(function()
     use 'wbthomason/packer.nvim'
+    use 'mfussenegger/nvim-dap'
+    use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
     use 'mattn/emmet-vim'
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-compe'
