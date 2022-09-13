@@ -39,16 +39,27 @@ return packer.startup(function()
     use 'folke/trouble.nvim' 
     use 'kyazdani42/nvim-tree.lua'
     use 'kyazdani42/nvim-web-devicons'
-    use 'projekt0n/github-nvim-theme'
+    use 'lunarvim/darkplus.nvim'
+    use "akinsho/toggleterm.nvim"
     use 'nvim-lua/popup.nvim'
+    use "moll/vim-bbye"
     use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
     use 'hoob3rt/lualine.nvim'
+    use 'folke/which-key.nvim'
     use 'lewis6991/gitsigns.nvim'
     use 'ray-x/lsp_signature.nvim'
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
+    }
+    use {
+        "nvim-telescope/telescope.nvim",
+        requires = {
+          { "nvim-telescope/telescope-live-grep-args.nvim" },
+        },
+        config = function()
+          require("telescope").load_extension("live_grep_args")
+        end
     }
 end)

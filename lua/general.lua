@@ -11,10 +11,6 @@ vim.g.syntax = 'enable'
 vim.opt.background = 'dark'
 vim.opt.termguicolors = true
 
--- Remap q to bd to remove buffer
-vim.api.nvim_command('cnoreabbrev wq w<bar>bd')
-vim.api.nvim_command('cnoreabbrev q bd')
-
 -- buffer opts
 vim.opt.autoread = true
 vim.opt.autowrite = true
@@ -73,5 +69,4 @@ vim.opt.pastetoggle = '<F4>'
 
 vim.api.nvim_set_keymap('v', '//', 'y/<C-R>"<cr>', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '<C-l>', 'gt', {})
-vim.api.nvim_set_keymap('n', '<C-h>', 'gT', {})
+vim.api.nvim_set_keymap('n', '<leader>q', ':Bdelete<cr>', { noremap = true })
