@@ -1,5 +1,5 @@
 -- LSP config (the mappings used in the default file don't quite work right)
-vim.api.nvim_set_keymap('n', ' gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', ' gD', '<cmd>lua vim.lsp.buf.definition()<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', ' gr', '<cmd>lua vim.lsp.buf.references()<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', ' gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', ' <C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { noremap = true })
