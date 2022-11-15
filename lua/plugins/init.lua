@@ -39,10 +39,10 @@ return packer.startup(function()
     use 'folke/trouble.nvim' 
     use 'kyazdani42/nvim-tree.lua'
     use 'kyazdani42/nvim-web-devicons'
-    use 'martinsione/darkplus.nvim'
-    use "akinsho/toggleterm.nvim"
+    use { 'catppuccin/nvim', as = 'catppuccin' }
+    use 'akinsho/toggleterm.nvim'
     use 'nvim-lua/popup.nvim'
-    use "moll/vim-bbye"
+    use 'moll/vim-bbye'
     use 'nvim-lua/plenary.nvim'
     use 'hoob3rt/lualine.nvim'
     use 'folke/which-key.nvim'
@@ -54,12 +54,12 @@ return packer.startup(function()
         run = ':TSUpdate'
     }
     use {
-        "nvim-telescope/telescope.nvim",
+        'nvim-telescope/telescope.nvim',
         requires = {
-          { "nvim-telescope/telescope-live-grep-args.nvim" },
+          { 'nvim-telescope/telescope-live-grep-args.nvim' },
         },
         config = function()
-          require("telescope").load_extension("live_grep_args")
+          require('telescope').load_extension('live_grep_args')
         end
     }
 end)
