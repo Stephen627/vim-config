@@ -39,7 +39,7 @@ return packer.startup(function()
     use 'folke/trouble.nvim' 
     use 'kyazdani42/nvim-tree.lua'
     use 'kyazdani42/nvim-web-devicons'
-    use 'lunarvim/darkplus.nvim'
+    use 'martinsione/darkplus.nvim'
     use "akinsho/toggleterm.nvim"
     use 'nvim-lua/popup.nvim'
     use "moll/vim-bbye"
