@@ -37,6 +37,9 @@ vim.api.nvim_command('autocmd Filetype typescriptreact setlocal ts=2 sts=2 sw=2'
 vim.api.nvim_command('autocmd Filetype css             setlocal ts=2 sts=2 sw=2')
 vim.api.nvim_command('autocmd Filetype scss            setlocal ts=2 sts=2 sw=2')
 
+-- disable mouse mode
+vim.api.nvim_command('set mouse=')
+
 vim.opt.history = 400
 
 vim.opt.clipboard = 'unnamed'
@@ -45,7 +48,6 @@ vim.opt.ruler = true
 vim.opt.cmdheight = 1
 vim.opt.textwidth = 120
 vim.opt.colorcolumn = '+1'
-
 
 vim.opt.foldcolumn = '1'
 
@@ -57,7 +59,7 @@ vim.api.nvim_set_keymap('n', '<leader><cr>', ':noh<cr>', {})
 -- Spelling
 
 vim.opt.langmenu = 'en'
-vim.api.nvim_set_keymap('n', '<leader>ss', ':setlocal spell!', {})
+vim.api.nvim_set_keymap('n', '<leader>ss<cr>', ':setlocal spell!', {})
 
 -- Markdown
 
