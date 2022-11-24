@@ -15,7 +15,10 @@ local config = {
                 "SimpleXML", "snmp", "soap", "sockets", "sodium", "SPL", "sqlite3", "standard",
                 "superglobals", "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer", "xml",
                 "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib"
-            }
+            },
+            files = {
+                exclude = {}
+            },
         }
     },
     on_attach = function (client, bufnr)
