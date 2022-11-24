@@ -4,6 +4,7 @@
 
 - Install fonts in the fonts directory and use it for your terminal font
   - The icons in the main bar and the file explorer require this
+- [lazygit](https://github.com/jesseduffield/lazygit)
 - Run nvim +PackerInstall
 - Install language servers
     - npm i -g intelephense
