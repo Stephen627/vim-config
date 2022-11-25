@@ -16,4 +16,5 @@ if projectSettings.lsp and projectSettings.lsp.tsserver then
     config = utils.merge(config, projectSettings.lsp.tsserver)
 end
 
+config.capabilities = require('cmp_nvim_lsp').default_capabilities()
 require'lspconfig'.tsserver.setup(config)

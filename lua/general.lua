@@ -48,6 +48,7 @@ vim.opt.ruler = true
 vim.opt.cmdheight = 1
 vim.opt.textwidth = 120
 vim.opt.colorcolumn = '+1'
+vim.opt.completeopt = 'menu,menuone,noselect'
 
 vim.opt.foldcolumn = '1'
 

@@ -17,4 +17,5 @@ if projectSettings.lsp and projectSettings.lsp.cssls then
     config = utils.merge(config, projectSettings.lsp.cssls)
 end
 
+config.capabilities = require('cmp_nvim_lsp').default_capabilities()
 require'lspconfig'.cssls.setup(config)

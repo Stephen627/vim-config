@@ -34,4 +34,5 @@ if projectSettings.lsp and projectSettings.lsp.intelephense then
     config = utils.merge(config, projectSettings.lsp.intelephense)
 end
 
+config.capabilities = require('cmp_nvim_lsp').default_capabilities()
 require 'lspconfig'.intelephense.setup(config)

@@ -5,11 +5,6 @@
 -- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
 -- vim._update_package_paths()
 
-
--- Possible new plugins
--- https://github.com/mfussenegger/nvim-dap
--- https://github.com/nvim-treesitter/nvim-treesitter
-
 vim.opt.packpath = vim.fn.stdpath('config') .. '/vendor'
 
 -- Install packer if it doesn't exist
@@ -29,30 +24,55 @@ packer.init({
 
 return packer.startup(function()
     use 'wbthomason/packer.nvim'
-    use 'mfussenegger/nvim-dap'
-    use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
-    use 'mattn/emmet-vim'
+    -- Disabling because they need more setup
+    -- use 'mfussenegger/nvim-dap'
+    -- use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
+
+    -- Libraries basically everything relies on
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-lua/popup.nvim'
+
+    -- Theme
+    use { 'catppuccin/nvim', as = 'catppuccin' }
+
+    -- LSP features and setup
     use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/nvim-compe'
     use 'glepnir/lspsaga.nvim'
     use 'folke/lsp-colors.nvim'
-    use 'folke/trouble.nvim' 
-    use 'kyazdani42/nvim-tree.lua'
-    use 'kyazdani42/nvim-web-devicons'
-    use { 'catppuccin/nvim', as = 'catppuccin' }
-    use 'akinsho/toggleterm.nvim'
-    use 'nvim-lua/popup.nvim'
-    use 'moll/vim-bbye'
-    use 'nvim-lua/plenary.nvim'
-    use 'hoob3rt/lualine.nvim'
-    use 'folke/which-key.nvim'
-    use 'lewis6991/gitsigns.nvim'
     use 'ray-x/lsp_signature.nvim'
+
+    -- Completion engine with sources
+    use 'hrsh7th/nvim-cmp'
+    use { 'hrsh7th/cmp-nvim-lsp', requires = { 'hrsh7th/nvim-cmp' } }
+    use { 'hrsh7th/cmp-buffer', requires = { 'hrsh7th/nvim-cmp' } }
+    use { 'hrsh7th/cmp-path', requires = { 'hrsh7th/nvim-cmp' } }
+    use { 'hrsh7th/cmp-cmdline', requires = { 'hrsh7th/nvim-cmp' } }
+
+    -- Snippets
+    use 'rafamadriz/friendly-snippets'
+    use { 'hrsh7th/vim-vsnip', requires = { 'rafamadriz/friendly-snippets' } }
+    use { 'hrsh7th/cmp-vsnip', requires = { 'hrsh7th/vim-vsnip', 'hrsh7th/nvim-cmp' } }
+
+    -- Nice icons
+    use 'kyazdani42/nvim-web-devicons'
+
+    -- File navigation
+    use 'kyazdani42/nvim-tree.lua'
+
+    -- Popup terminal
+    use 'akinsho/toggleterm.nvim'
+
+    -- Easier buffer commands
+    use 'moll/vim-bbye'
+
+    -- File and buffer status line
+    use 'hoob3rt/lualine.nvim'
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
+
+    -- Git signs in files
+    use 'lewis6991/gitsigns.nvim'
+
+    -- File finder
     use {
         'nvim-telescope/telescope.nvim',
         requires = {

@@ -7,19 +7,17 @@ pcall(includeSetup)
 require 'general'
 require 'plugins'
 require 'plugins.lsp'
-require 'plugins.compe-config'
 require 'plugins.colorscheme'
 require 'plugins.gitsigns'
 require 'plugins.nvim-web-devicons'
 require 'plugins.lualine'
 require 'plugins.telescope'
-require 'plugins.trouble'
 require 'plugins.nvim-tree'
 require 'plugins.bufferline'
 require 'plugins.lsp_signature'
-require 'plugins.dap'
+-- require 'plugins.dap'
 require 'plugins.toggleterm'
-require 'template-picker'
+require 'plugins.nvim-cmp'
 
 
 -- Ignore errors when trying to import the override file
