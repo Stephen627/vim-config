@@ -60,7 +60,7 @@ vim.api.nvim_set_keymap('n', '<leader><cr>', ':noh<cr>', {})
 -- Spelling
 
 vim.opt.langmenu = 'en'
-vim.api.nvim_set_keymap('n', '<leader>ss<cr>', ':setlocal spell!', {})
+vim.api.nvim_set_keymap('n', '<leader>ss', ':setlocal spell!<cr>', {})
 
 -- Markdown
 
