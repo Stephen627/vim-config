@@ -5,6 +5,7 @@
 - Make sure you are using a [NerdFont](https://www.nerdfonts.com/) font or a terminal that injects NerdFont icons like
   [kitty](https://sw.kovidgoyal.net/kitty/)
 - [lazygit](https://github.com/jesseduffield/lazygit)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
 - Run nvim +PackerInstall
 - Install language servers
     - npm i -g intelephense
