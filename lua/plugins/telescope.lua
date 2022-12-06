@@ -2,8 +2,13 @@ require('telescope').setup{
     defaults = {
         file_ignore_patterns = { '.git', 'node_modules', 'vendor', 'logs' }
     },
-    vimgrep_arguments = 'grep'
+    vimgrep_arguments = 'grep',
+    extensions = {
+        ["ui-select"] = {
+            require("telescope.themes").get_cursor {
+            }
+        }
+  }
 }
 
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { noremap = true })
+require("telescope").load_extension("ui-select")

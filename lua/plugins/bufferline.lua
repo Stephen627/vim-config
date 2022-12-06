@@ -172,6 +172,3 @@ bufferline.setup {
   },
 }
 
-vim.api.nvim_set_keymap('n', 'gb', ':BufferLinePick<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-l>', ':BufferLineCycleNext<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-h>', ':BufferLineCyclePrev<cr>', { noremap = true })

@@ -21,9 +21,6 @@ local config = {
             },
         }
     },
-    on_attach = function (client, bufnr)
-        require'lsp_signature'.on_attach()
-    end
 }
 
 if globalSettings and globalSettings.lsp and globalSettings.lsp.intelephense then

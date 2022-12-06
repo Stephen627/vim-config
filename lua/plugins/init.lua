@@ -39,7 +39,6 @@ return packer.startup(function()
     use 'neovim/nvim-lspconfig'
     use 'glepnir/lspsaga.nvim'
     use 'folke/lsp-colors.nvim'
-    use 'ray-x/lsp_signature.nvim'
 
     -- Completion engine with sources
     use 'hrsh7th/nvim-cmp'
@@ -82,4 +81,25 @@ return packer.startup(function()
           require('telescope').load_extension('live_grep_args')
         end
     }
+    use 'nvim-telescope/telescope-ui-select.nvim'
+
+    -- Command helper
+    use 'mrjones2014/legendary.nvim'
+    use 'stevearc/dressing.nvim'
+
+    -- Noitifcations
+    use {
+    'rcarriga/nvim-notify',
+    config = function ()
+      require("notify").setup {
+        stages = 'fade_in_slide_out',
+        background_colour = 'FloatShadow',
+        timeout = 3000,
+      }
+      vim.notify = require('notify')
+    end
+  }
+
+    -- Laravel helpers
+    use 'noahfrederick/vim-laravel'
 end)

@@ -25,7 +25,7 @@ mapping = cmp.mapping.preset.insert({
     ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
             cmp.select_next_item()
-        elseif vim.fn['vsnip#jumpable'](1) then
+        elseif vim.fn['vsnip#jumpable'](1) == 1 then
             feedkey('<Plug>(vsnip-jump-next)', '')
         else
             fallback()
@@ -35,7 +35,7 @@ mapping = cmp.mapping.preset.insert({
     ['<S-Tab>'] = cmp.mapping(function()
         if cmp.visible() then
             cmp.select_prev_item()
-        elseif vim.fn['vsnip#jumpable'](-1) then
+        elseif vim.fn['vsnip#jumpable'](-1) == 1 then
             feedkey('<Plug>(vsnip-jump-prev)', '')
         else
             fallback()

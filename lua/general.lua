@@ -55,12 +55,9 @@ vim.opt.foldcolumn = '1'
 vim.opt.encoding = 'utf8'
 vim.opt.ffs = 'unix,dos,mac'
 
-vim.api.nvim_set_keymap('n', '<leader><cr>', ':noh<cr>', {})
-
 -- Spelling
 
 vim.opt.langmenu = 'en'
-vim.api.nvim_set_keymap('n', '<leader>ss', ':setlocal spell!<cr>', {})
 
 -- Markdown
 
@@ -71,5 +68,3 @@ vim.g.vim_markdown_folding_disabled = 1
 vim.opt.pastetoggle = '<F4>'
 
 vim.api.nvim_set_keymap('v', '//', 'y/<C-R>"<cr>', { noremap = true })
-
-vim.api.nvim_set_keymap('n', '<leader>q', ':Bdelete<cr>', { noremap = true })

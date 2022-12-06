@@ -46,5 +46,3 @@ gitsigns.setup {
     enable = false,
   },
 }
-
-vim.api.nvim_set_keymap('n', '<leader>gsd', '<cmd>Gitsigns diffthis<cr>', { noremap = true })
