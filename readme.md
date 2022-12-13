@@ -9,7 +9,7 @@
 - Run nvim +PackerInstall
 - Install language servers
     - npm i -g intelephense
-    - npm i -g tsserver typescript
+    - npm i -g ts-server typescript
     - npm i -g vscode-langservers-extracted
 - Install debug servers
     - PHP
