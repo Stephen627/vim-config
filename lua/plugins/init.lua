@@ -23,24 +23,26 @@ packer.init({
 
 
 return packer.startup(function()
-    use 'wbthomason/packer.nvim'
+    use 'wbthomason/packer.nvim' -- Always
     -- Disabling because they need more setup
     -- use 'mfussenegger/nvim-dap'
     -- use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
 
     -- Libraries basically everything relies on
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-lua/popup.nvim'
+    use 'nvim-lua/plenary.nvim' -- Always
+    use 'nvim-lua/popup.nvim' -- Always
 
     -- Theme
-    use { 'catppuccin/nvim', as = 'catppuccin' }
+    use { 'catppuccin/nvim', as = 'catppuccin' } -- Always
 
     -- LSP features and setup
+    -- Load when entering TS/JS/PHP/CSS/SCSS
     use 'neovim/nvim-lspconfig'
     use 'glepnir/lspsaga.nvim'
     use 'folke/lsp-colors.nvim'
 
     -- Completion engine with sources
+    -- Load when entering TS/JS/PHP/CSS/SCSS
     use 'hrsh7th/nvim-cmp'
     use { 'hrsh7th/cmp-nvim-lsp', requires = { 'hrsh7th/nvim-cmp' } }
     use { 'hrsh7th/cmp-buffer', requires = { 'hrsh7th/nvim-cmp' } }
@@ -48,30 +50,38 @@ return packer.startup(function()
     use { 'hrsh7th/cmp-cmdline', requires = { 'hrsh7th/nvim-cmp' } }
 
     -- Snippets
+    -- Load when entering TS/JS/PHP/CSS/SCSS/HTML
     use 'rafamadriz/friendly-snippets'
     use { 'hrsh7th/vim-vsnip', requires = { 'rafamadriz/friendly-snippets' } }
     use { 'hrsh7th/cmp-vsnip', requires = { 'hrsh7th/vim-vsnip', 'hrsh7th/nvim-cmp' } }
 
     -- Nice icons
+    -- Always
     use 'kyazdani42/nvim-web-devicons'
 
     -- File navigation
+    -- Always
     use 'kyazdani42/nvim-tree.lua'
 
     -- Popup terminal
+    -- Always
     use 'akinsho/toggleterm.nvim'
 
     -- Easier buffer commands
+    -- Always
     use 'moll/vim-bbye'
 
     -- File and buffer status line
+    -- Always
     use 'hoob3rt/lualine.nvim'
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
     -- Git signs in files
+    -- Always
     use 'lewis6991/gitsigns.nvim'
 
     -- File finder
+    -- Always
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
@@ -84,10 +94,12 @@ return packer.startup(function()
     use 'nvim-telescope/telescope-ui-select.nvim'
 
     -- Command helper
+    -- Always
     use 'mrjones2014/legendary.nvim'
     use 'stevearc/dressing.nvim'
 
-    -- Noitifcations
+    -- Notifications 
+    -- Always
     use {
     'rcarriga/nvim-notify',
     config = function ()
@@ -101,5 +113,6 @@ return packer.startup(function()
   }
 
     -- Laravel helpers
+    -- Load when entering PHP
     use 'noahfrederick/vim-laravel'
 end)
