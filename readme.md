@@ -1,5 +1,9 @@
 # Vim Config
 
+## Help
+
+For a complete list of commands press `<leader>?` (by default the leader character is <space>)
+
 ## Requirements
 
 - Make sure you are using a [NerdFont](https://www.nerdfonts.com/) font or a terminal that injects NerdFont icons like
