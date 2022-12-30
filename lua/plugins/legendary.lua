@@ -29,7 +29,9 @@ require('legendary').setup({
         { '<C-l>', '<cmd>BufferLineCycleNext<cr>', description = 'Go to the next buffer' },
         { '<C-h>', '<cmd>BufferLineCyclePrev<cr>', description = 'Go to the previous buffer' },
         { '<leader>ff', '<cmd>Telescope find_files<cr>', description = 'Find files' },
-        { '<leader>fg', '<cmd>lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<cr>', description = 'Grep files' }
+        { '<leader>fg', '<cmd>lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<cr>', description = 'Grep files' },
+        { '<C-n>', '<cmd>NvimTreeToggle<cr>', description = 'Toggle file browser' },
+        { [[<C-\>]], '<cmd>ToggleTerm<cr>', description = 'Toggle terminal' }
         --{
         --    itemgroup = 'General',
         --    description = 'General key bindings',
