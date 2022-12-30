@@ -6,7 +6,6 @@
   [kitty](https://sw.kovidgoyal.net/kitty/)
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
-- Run nvim +PackerInstall
 - Install language servers
     - npm i -g intelephense
     - npm i -g ts-server typescript
