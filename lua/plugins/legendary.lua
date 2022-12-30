@@ -9,7 +9,7 @@ require('legendary').setup({
         { 'gr', '<cmd>Lspsaga rename<cr>', description = 'Rename class, variable, or function' },
         { 'gd', '<cmd>Lspsaga peek_definition<cr>', description = 'Peek the definition' },
         { '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<cr>', description = 'Go to the definition' },
-        { '<leader>cd', '<cmd>Lspsaga show_line_diagnositics<cr>', description = 'Show diagnostics for the current line' },
+        { '<leader>cd', '<cmd>Lspsaga show_line_diagnostics<cr>', description = 'Show diagnostics for the current line' },
         { '[e', '<cmd>Lspsaga diagnostic_jump_prev<cr>', description = 'Jump to the previous diagnostic event' },
         { ']e', '<cmd>Lspsaga diagnostic_jump_next<cr>', description = 'Jump to the next diagnostic event' },
         { '[E', function()

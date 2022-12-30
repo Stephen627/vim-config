@@ -3,6 +3,7 @@ local utils = require 'utils'
 local projectSettings = require 'settings'
 
 local config = {
+    quotePreference = 'single',
 }
 
 if globalSettings and globalSettings.lsp and globalSettings.lsp.tsserver then
