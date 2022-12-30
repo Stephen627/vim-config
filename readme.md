@@ -2,7 +2,7 @@
 
 ## Help
 
-For a complete list of commands press `<leader>?` (by default the leader character is <space>)
+For a complete list of commands press `<leader>?` (by default the leader character is `<space>`)
 
 ## Requirements
 
