@@ -1,6 +1,7 @@
 -- Install lazy if it doesn't already exist
-local modulepath = vim.fn.stdpath('config') .. '/vendor'
-local lazypath = modulepath .. "/lazy.nvim"
+local vendorpath = vim.fn.stdpath('config') .. '/vendor'
+local modulepath = vendorpath .. '/modules'
+local lazypath = vendorpath .. '/lazy.nvim'
 
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", lazypath })
@@ -9,7 +10,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local programmingfiletypes = {
-    'php', 'typescript', 'javascript', 'html', 'typescriptreact', 'javascriptreact', 'scss', 'css',
+    'php', 'typescript', 'javascript', 'html', 'typescriptreact', 'javascriptreact', 'scss', 'css', 'lua',
 }
 
 require('lazy').setup({
@@ -39,14 +40,35 @@ require('lazy').setup({
     -- LSP features and setup
     {
         'neovim/nvim-lspconfig',
-        config = function ()
-            require 'plugins.lsp'
-        end,
         dependencies = {
             'glepnir/lspsaga.nvim',
             'folke/lsp-colors.nvim',
         },
-        ft = programmingfiletypes,
+        ft = programmingfiletypes
+    },
+    {
+        'williamboman/mason.nvim',
+        config = function ()
+            require('mason').setup({
+                install_root_dir = vendorpath .. '/lsp',
+            })
+            require('mason-lspconfig').setup()
+
+            require('mason-lspconfig').setup_handlers {
+                function (server_name) -- default handler
+                    require('lspconfig')[server_name].setup {}
+                end,
+            }
+        end,
+        dependencies = {
+            'williamboman/mason-lspconfig.nvim'
+        },
+        fp = programmingfiletypes
+    },
+
+    {
+        'shortcuts/no-neck-pain.nvim',
+        version = '*'
     },
 
     -- Completion engine with sources
