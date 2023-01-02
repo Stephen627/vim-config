@@ -11,13 +11,10 @@ For a complete list of commands press `<leader>?` (by default the leader charact
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - Install language servers
-    - npm i -g intelephense
-    - npm i -g ts-server typescript
-    - npm i -g vscode-langservers-extracted
+    - Run :Mason within neovim and hover the LSP you require and press `i`
+    - Recommended
+        - intelephense (PHP)
+        - typescript-lanuage-server (TS/JS)
+        - css-lsp (CSS/SCSS)
 - Install debug servers
-    - PHP
-        - Example of debug settings in debug/php.json (needs to be copied to
-          .vscode/launch.json)
-        - git clone https://github.com/xdebug/vscode-php-debug.git /opt/
-        - cd /opt/vscode-php-debug
-        - npm install && npm run build
+    - Run :Mason within neovim and hover the DAP you require and press `i`
