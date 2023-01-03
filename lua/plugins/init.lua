@@ -2,6 +2,7 @@
 local vendorpath = vim.fn.stdpath('config') .. '/vendor'
 local modulepath = vendorpath .. '/modules'
 local lazypath = vendorpath .. '/lazy.nvim'
+local projectSettings = require('settings')
 
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", lazypath })
@@ -14,6 +15,7 @@ local programmingfiletypes = {
 }
 
 require('lazy').setup({
+    -- Debug
     {
         'mfussenegger/nvim-dap',
         config = function ()
@@ -53,13 +55,18 @@ require('lazy').setup({
         'williamboman/mason.nvim',
         config = function ()
             require('mason').setup({
-                install_root_dir = vendorpath .. '/lsp',
+                install_root_dir = vendorpath .. '/mason',
             })
             require('mason-lspconfig').setup()
 
             require('mason-lspconfig').setup_handlers {
                 function (server_name) -- default handler
-                    require('lspconfig')[server_name].setup({})
+                    local settings = {}
+                    if (projectSettings and projectSettings.lsp and projectSettings.lsp[server_name]) then
+                        settings = projectSettings.lsp[server_name]
+                    end
+
+                    require('lspconfig')[server_name].setup(settings)
                 end,
             }
         end,
@@ -67,11 +74,6 @@ require('lazy').setup({
             'williamboman/mason-lspconfig.nvim'
         },
         fp = programmingfiletypes
-    },
-
-    {
-        'shortcuts/no-neck-pain.nvim',
-        version = '*'
     },
 
     -- Completion engine with sources
@@ -103,7 +105,9 @@ require('lazy').setup({
     {
         'kyazdani42/nvim-web-devicons',
         config = function ()
-            require 'plugins.nvim-web-devicons'
+            require('nvim-web-devicons').setup({
+                default = true
+            })
         end
     },
 

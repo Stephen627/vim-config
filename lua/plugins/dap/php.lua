@@ -3,7 +3,7 @@ local dap = require('dap')
 dap.adapters.php = {
   type = 'executable',
   command = 'node',
-  args = { vim.fn.stdpath('config') .. '/vendor/lsp/packages/php-debug-adapter/extension/out/phpDebug.js' }
+  args = { vim.fn.stdpath('config') .. '/vendor/mason/packages/php-debug-adapter/extension/out/phpDebug.js' }
 }
 
 dap.configurations.php = {

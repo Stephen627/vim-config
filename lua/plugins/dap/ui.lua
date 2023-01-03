@@ -11,7 +11,7 @@ require('dapui').setup({
   layouts = {
     {
       elements = {
-        'scopes',
+        { id = 'scopes' , size = 0.25 },
         'breakpoints',
         'stacks',
         'console',
@@ -28,4 +28,8 @@ require('dapui').setup({
     },
   },
   windows = { indent = 1 },
+  render = {
+    max_type_length = nil, -- Can be integer or nil.
+    max_value_lines = 100, -- Can be integer or nil.
+  }
 })

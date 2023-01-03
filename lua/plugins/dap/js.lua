@@ -3,7 +3,7 @@ local dap = require('dap')
 dap.adapters.firefox = {
   type = 'executable',
   command = 'node',
-  args = { vim.fn.stdpath('config') .. '/vendor/lsp/packages/firefox-debug-adapter/dist/adapter.bundle.js' }
+  args = { vim.fn.stdpath('config') .. '/vendor/mason/packages/firefox-debug-adapter/dist/adapter.bundle.js' }
 }
 
 local config = {
