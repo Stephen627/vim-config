@@ -14,16 +14,19 @@ local programmingfiletypes = {
 }
 
 require('lazy').setup({
-    -- Disabling because they need more setup
-    -- {
-    --     'mfussenegger/nvim-dap',
-    --     config = function ()
-    --         require 'plugins.dap'
-    --     end
-    -- },
-    -- 'rcarriga/nvim-dap-ui',
+    {
+        'mfussenegger/nvim-dap',
+        config = function ()
+            require 'plugins.dap'
+        end,
+        keys = { '<F4>', '<F5>', '<leader>b' },
+        dependencies = {
+            'rcarriga/nvim-dap-ui',
+        }
+    },
     
     -- Libraries basically everything relies on
+    'anuvyklack/hydra.nvim',
     'nvim-lua/plenary.nvim',
     'nvim-lua/popup.nvim',
 
@@ -56,7 +59,7 @@ require('lazy').setup({
 
             require('mason-lspconfig').setup_handlers {
                 function (server_name) -- default handler
-                    require('lspconfig')[server_name].setup {}
+                    require('lspconfig')[server_name].setup({})
                 end,
             }
         end,

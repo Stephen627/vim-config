@@ -1,4 +1,6 @@
+local hydra = require('hydra.statusline')
 local status_ok, lualine = pcall(require, "lualine")
+
 if not status_ok then
 	return
 end
@@ -27,7 +29,11 @@ local diff = {
 local mode = {
 	"mode",
 	fmt = function(str)
-		return "-- " .. str .. " --"
+        if (not hydra.is_active()) then
+            return "-- " .. str .. " --"
+        end
+
+        return '-- ' .. hydra.get_name() .. ' --'
 	end,
 }
 

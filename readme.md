@@ -18,3 +18,13 @@ For a complete list of commands press `<leader>?` (by default the leader charact
         - css-lsp (CSS/SCSS)
 - Install debug servers
     - Run :Mason within neovim and hover the DAP you require and press `i`
+    - For PHP, make sure the following settings are enabled for Xdebug 3.x
+    ```
+    [XDebug]
+    zend_extension = xdebug.so
+    xdebug.mode = debug,develop,coverage
+    xdebug.start_with_request = yes
+    xdebug.discover_client_host = yes
+    xdebug.client_host = 172.18.0.1
+    xdebug.client_port = 9003
+    ```
