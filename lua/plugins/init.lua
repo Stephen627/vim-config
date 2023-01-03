@@ -21,7 +21,7 @@ require('lazy').setup({
         config = function ()
             require 'plugins.dap'
         end,
-        keys = { '<F4>', '<F5>', '<leader>b' },
+        keys = { '<F4>' },
         dependencies = {
             'rcarriga/nvim-dap-ui',
         }
