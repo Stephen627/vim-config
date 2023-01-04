@@ -63,6 +63,14 @@ Hydra.spawn = function(head)
 	end
 end
 
+require('legendary').keymap({
+    '<leader>dd',
+    function ()
+        dap_hydra:activate()
+    end,
+    description = 'Open debug mode',
+})
+
 
 require 'plugins.dap.ui'
 require 'plugins.dap.php'

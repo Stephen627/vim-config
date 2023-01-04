@@ -21,7 +21,7 @@ require('lazy').setup({
         config = function ()
             require 'plugins.dap'
         end,
-        keys = { '<F4>' },
+        keys = { '<leader>dd' },
         dependencies = {
             'rcarriga/nvim-dap-ui',
         }
@@ -57,8 +57,17 @@ require('lazy').setup({
             require('mason').setup({
                 install_root_dir = vendorpath .. '/mason',
             })
-            require('mason-lspconfig').setup()
-
+            require('plugins.dap.ensure_installed')({
+                'php-debug-adapter',
+                'firefox-debug-adapter'
+            })
+            require('mason-lspconfig').setup({
+                ensure_installed = {
+                    'intelephense',
+                    'cssls',
+                    'tsserver',
+                }
+            })
             require('mason-lspconfig').setup_handlers {
                 function (server_name) -- default handler
                     local settings = {}
@@ -178,7 +187,14 @@ require('lazy').setup({
             'stevearc/dressing.nvim',
         },
         config = function ()
-            require 'plugins.legendary'
+            require('plugins.legendary')
+        end
+    },
+
+    {
+        'stevearc/dressing.nvim',
+        config = function ()
+            require('plugins.dap.templates')
         end
     },
 

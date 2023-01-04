@@ -12,10 +12,6 @@ For a complete list of commands press `<leader>?` (by default the leader charact
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - Install language servers
     - Run :Mason within neovim and hover the LSP you require and press `i`
-    - Recommended
-        - intelephense (PHP)
-        - typescript-lanuage-server (TS/JS)
-        - css-lsp (CSS/SCSS)
 - Install debug servers
     - Run :Mason within neovim and hover the DAP you require and press `i`
     - For PHP, make sure the following settings are enabled for Xdebug 3.x
@@ -28,3 +24,9 @@ For a complete list of commands press `<leader>?` (by default the leader charact
     xdebug.client_host = 172.18.0.1
     xdebug.client_port = 9003
     ```
+- By default the following LSP and DAP servers are installed
+    - intelephense
+    - typescript-language-server
+    - css-lsp
+    - php-debug-adapter
+    - firefox-debug-adapter
