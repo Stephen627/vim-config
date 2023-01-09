@@ -5,10 +5,10 @@ local dapUi = require('dapui')
 local Hydra = require('hydra')
 
 local hint = [[
- _n_: step over 
  _s_: Continue/Start
  _b_: Breakpoint
  _K_: Eval
+ _n_: step over 
  _i_: step into
  _o_: step out
  _c_: to cursor
@@ -17,7 +17,7 @@ local hint = [[
  _O_: Open UI
  ^ ^
  _q_: exit
-]]    
+]]
 
 local dap_hydra = Hydra({
    hint = hint,

@@ -10,10 +10,6 @@ local PromptMap = {
 }
 
 
-local function checkIfVsCodeExists ()
-    return vim.loop.fs_stat(vim.fn.getcwd() .. '/.vscode')
-end
-
 local function writeContentsToFile (contents, filePath)
     local handle = io.open(filePath, 'w')
     io.output(handle)

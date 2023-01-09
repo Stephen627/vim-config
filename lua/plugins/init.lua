@@ -19,14 +19,14 @@ require('lazy').setup({
     {
         'mfussenegger/nvim-dap',
         config = function ()
-            require 'plugins.dap'
+            require("plugins.dap")
         end,
         keys = { '<leader>dd' },
         dependencies = {
             'rcarriga/nvim-dap-ui',
         }
     },
-    
+
     -- Libraries basically everything relies on
     'anuvyklack/hydra.nvim',
     'nvim-lua/plenary.nvim',
@@ -66,6 +66,7 @@ require('lazy').setup({
                     'intelephense',
                     'cssls',
                     'tsserver',
+                    'sumneko_lua'
                 }
             })
             require('mason-lspconfig').setup_handlers {
@@ -203,7 +204,7 @@ require('lazy').setup({
         'rcarriga/nvim-notify',
         config = function ()
             require("notify").setup {
-                stages = 'fade_in_slide_out',
+                stages = "slide",
                 background_colour = 'FloatShadow',
                 timeout = 3000,
             }

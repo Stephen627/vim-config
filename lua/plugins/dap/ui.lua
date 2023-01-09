@@ -3,7 +3,7 @@ require('dapui').setup({
   mappings = {
     -- Use a table to apply multiple mappings
     expand = { '<cr>', '<2-LeftMouse>' },
-    open = '<cr>',
+    open = 'l',
     remove = 'd',
     edit = 'e',
     repl = 'r',
@@ -11,14 +11,21 @@ require('dapui').setup({
   layouts = {
     {
       elements = {
-        { id = 'scopes' , size = 0.25 },
+        { id = 'scopes', size = 0.5 },
         'breakpoints',
         'stacks',
-        'console',
       },
       size = 40,
       position = 'left',
     },
+    {
+      elements = {
+        'console',
+        'repl',
+      },
+      size = 0.25,
+      position = 'bottom'
+    }
   },
   floating = {
     max_height = nil, -- These can be integers or a float between 0 and 1.

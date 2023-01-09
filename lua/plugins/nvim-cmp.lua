@@ -32,7 +32,7 @@ mapping = cmp.mapping.preset.insert({
         end
     end, {'i', 's'}),
 
-    ['<S-Tab>'] = cmp.mapping(function()
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
             cmp.select_prev_item()
         elseif vim.fn['vsnip#jumpable'](-1) == 1 then

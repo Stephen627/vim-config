@@ -1,0 +1,23 @@
+{
+    "lsp": {
+        "sumneko_lua": {
+            "settings": {
+                "Lua": {
+                    "completion": {
+                        "keywordSnippet": "Disable"
+                    },
+                    "diagnostics": {
+                        "globals": [ "vim", "use" ],
+                        "disable": [ "lowercase-global" ]
+                    },
+                    "runtime": {
+                        "version": "LuaJIT",
+                        "path": []
+                    },
+                    "workspace.library": {
+                    }
+                }
+            }
+        }
+    }
+}
