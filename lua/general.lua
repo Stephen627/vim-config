@@ -1,5 +1,8 @@
 vim.g.mapleader = ' '
 
+-- Disabling showing the mode as this is handled by lualine
+vim.opt.showmode = false
+
 -- Setting up searching
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
@@ -36,6 +39,7 @@ vim.api.nvim_command('autocmd Filetype javascriptreact setlocal ts=2 sts=2 sw=2'
 vim.api.nvim_command('autocmd Filetype typescriptreact setlocal ts=2 sts=2 sw=2')
 vim.api.nvim_command('autocmd Filetype css             setlocal ts=2 sts=2 sw=2')
 vim.api.nvim_command('autocmd Filetype scss            setlocal ts=2 sts=2 sw=2')
+vim.api.nvim_command('autocmd Filetype lua             setlocal ts=2 sts=2 sw=2')
 
 -- disable mouse mode
 vim.api.nvim_command('set mouse=')
@@ -68,3 +72,31 @@ vim.g.vim_markdown_folding_disabled = 1
 vim.opt.pastetoggle = '<F4>'
 
 vim.api.nvim_set_keymap('v', '//', 'y/<C-R>"<cr>', { noremap = true })
+
+-- Stop using repeated movement keys
+require('util.stop-it').setup({
+  mode = { "n", "v" },
+  keys = { "h", "j", "k", "l" },
+  limit = 5,
+})
+
+-- Stop using Ctrl + c all together
+require('util.stop-it').setup({
+  mode = { "i" },
+  keys = { "<C-c>" },
+  limit = 1,
+  message = "Don't use Ctrl+c use Esc",
+})
+
+-- Never use arrow keys
+require('util.stop-it').setup({
+  mode = { "i", "n", "v" },
+  keys = { "<Left>", "<Right>", "<Up>", "<Down>" },
+  limit = 1,
+  message = [[Don't use arrow keys.
+    h = Left
+    j = Down
+    k = Up
+    l = Right]],
+  ignoreFileTypes = {},
+})
