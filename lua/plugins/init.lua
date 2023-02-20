@@ -62,12 +62,12 @@ require('lazy').setup({
                 'firefox-debug-adapter'
             })
             require('mason-lspconfig').setup({
-                ensure_installed = {
-                    'intelephense',
-                    'cssls',
-                    'tsserver',
-                    'sumneko_lua'
-                }
+              ensure_installed = {
+                'intelephense',
+                'cssls',
+                'tsserver',
+                'sumneko_lua'
+              },
             })
             require('mason-lspconfig').setup_handlers {
                 function (server_name) -- default handler
@@ -76,9 +76,24 @@ require('lazy').setup({
                         settings = projectSettings.lsp[server_name]
                     end
 
+                    if (server_name == "sumneko_lua") then
+                      local runtime_path = vim.split(package.path, ";")
+                      table.insert(runtime_path, "lua/?.lua")
+                      table.insert(runtime_path, "lua/?/init.lua")
+
+                      settings.settings.Lua.runtime.path = runtime_path
+                      settings.settings.Lua["workspace.library"] = vim.api.nvim_get_runtime_file("", true)
+                    end
+
                     require('lspconfig')[server_name].setup(settings)
                 end,
             }
+
+            local signs = { Error = "", Warn = "", Hint = "", Info = "I" }
+            for type, icon in pairs(signs) do
+              local hl = "DiagnosticSign" .. type
+              vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+            end
         end,
         dependencies = {
             'williamboman/mason-lspconfig.nvim'
@@ -134,6 +149,7 @@ require('lazy').setup({
     {
         'akinsho/toggleterm.nvim',
         cmd = 'ToggleTerm',
+        keys = { '<leader>gg' },
         config = function ()
             require 'plugins.toggleterm'
         end
@@ -149,12 +165,6 @@ require('lazy').setup({
             require 'plugins.lualine'
         end
     },
-    {
-        'akinsho/bufferline.nvim',
-        config = function ()
-            require 'plugins.bufferline'
-        end
-    },
 
     -- Git signs in files
     {
@@ -163,7 +173,7 @@ require('lazy').setup({
             require 'plugins.gitsigns'
         end,
         cond = function ()
-            return vim.loop.fs_stat(vim.fn.getcwd() .. '/.git')
+          return require('util').gitExists()
         end
     },
 
@@ -216,7 +226,7 @@ require('lazy').setup({
     {
         'noahfrederick/vim-laravel',
         cond = function ()
-            return vim.loop.fs_stat(vim.fn.getcwd() .. '/artisan')
+            return require("util").fileExistsInCurrentDirectory("artisan")
         end
     }
 }, {

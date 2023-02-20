@@ -1,6 +1,14 @@
 
 local M = {}
 
+function M.fileExistsInCurrentDirectory(name)
+  return vim.loop.fs_stat(vim.fn.getcwd() .. "/" .. name)
+end
+
+function M.gitExists()
+  return M.fileExistsInCurrentDirectory(".git")
+end
+
 function M.fileExists(name)
    local f=io.open(name,"r")
    if f~=nil then io.close(f) return true else return false end
@@ -103,6 +111,15 @@ function M.throttle(ms, fn)
       running = true
     end
   end
+end
+
+function M.split(str, on)
+  local output = {}
+  for i in string.gmatch(str, "([^" .. on .. "]+)") do
+    table.insert(output, i)
+  end
+
+  return output
 end
 
 return M

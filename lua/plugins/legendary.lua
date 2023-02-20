@@ -1,8 +1,10 @@
 require('legendary').setup({
     keymaps = {
         { '<leader>?', '<cmd>Legendary<cr>', description = 'Opens command help' },
+				{ 'jk', '<Esc>', description = 'Exit insert, visual, or command mode', mode = { 'i', 'v', 'c' } },
         { '<leader><cr>', '<cmd>noh<cr>', description = 'Clears all highlighed text' },
-        { '<leader>q', '<cmd>Bdelete<cr>', description = 'Deletes the current buffer' },
+        { '<leader>q', '<cmd>Bdelete<cr><cmd>q<cr>', description = 'Deletes the current buffer' },
+				{ '<C-s>', '<cmd>w<cr>', description = 'Save current buffer', mode = { 'n' } },
         { '<leader>ss', '<cmd>setlocal spell!<cr>', description = 'Toggles spell checking on active buffer' },
         { 'gh', '<cmd>Lspsaga lsp_finder<cr>', description = 'Find all definitions and referneces' },
         { '<leader>ca', '<cmd>Lspsaga code_action<cr>', description = 'Show code actions' },
@@ -18,18 +20,13 @@ require('legendary').setup({
         { ']E', function()
             require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
         end, description = 'Jump to the next diagnostic error event' },
-        { '<leader>o', '<cmd>LSoutlineToggle<cr>', description = 'Toggle the file outline' },
+        { '<leader>o', '<cmd>Lspsaga outline<cr>', description = 'Toggle the file outline' },
         { 'K', '<cmd>Lspsaga hover_doc<cr>', description = 'Open preview for the highlighted function definition' },
-        { '<A-d>', {
-            n = '<cmd>Lspsaga open_floaterm lazygit<cr>',
-            t = [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]]
-        }, description = 'Toggle lazy git' },
-        { '<leader>gsd', '<cmd>Gitsigns diffthis<cr>', description = 'Show git diff for the current buffer' },
-        { 'gb', '<cmd>BufferlinePick<cr>', description = 'Go to another buffer, the buffers at the top of the window will show the character(s) to use' },
-        { '<C-l>', '<cmd>BufferLineCycleNext<cr>', description = 'Go to the next buffer' },
-        { '<C-h>', '<cmd>BufferLineCyclePrev<cr>', description = 'Go to the previous buffer' },
+        { '<C-l>', '<cmd>bnext<cr>', description = 'Go to the next buffer' },
+        { '<C-h>', '<cmd>bprevious<cr>', description = 'Go to the previous buffer' },
         { '<leader>ff', '<cmd>Telescope find_files<cr>', description = 'Find files' },
         { '<leader>fg', '<cmd>lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<cr>', description = 'Grep files' },
+        { '<leader>fb', '<cmd>Telescope buffers<cr>', description = 'Find buffer' },
         { '<C-n>', '<cmd>NvimTreeToggle<cr>', description = 'Toggle file browser' },
         { [[<C-\>]], '<cmd>ToggleTerm<cr>', description = 'Toggle terminal' }
         --{
@@ -89,6 +86,22 @@ require('legendary').setup({
         --        { '<leader>fg', '<cmd>lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<cr>', description = 'Grep files' },
         --    }
         --}
+    },
+    commands = {
+      {
+        '<cmd>Bonly',
+        function ()
+          vim.cmd([[%bd | e# | bnext | bd]])
+        end,
+        description = 'Delete all buffers apart from the current buffer',
+      },
+      {
+        "<cmd>LspFormatBuffer",
+        function ()
+          vim.cmd([[lua vim.lsp.buf.format()]])
+        end,
+        description = "Formats current buffer given rules from the LSP",
+      },
     },
     select_prompt = ' Command Search ',
     -- Character to use to separate columns in the UI

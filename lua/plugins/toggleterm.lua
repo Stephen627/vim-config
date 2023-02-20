@@ -76,3 +76,15 @@ function _PYTHON_TOGGLE()
 	python:toggle()
 end
 
+if (require('util').gitExists()) then
+  require('legendary').keymap(
+    { '<leader>gg', {
+        n = function()
+          _LAZYGIT_TOGGLE()
+        end,
+        t = function()
+          _LAZYGIT_TOGGLE()
+        end,
+    }, description = 'Toggle lazy git' }
+  )
+end

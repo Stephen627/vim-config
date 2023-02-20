@@ -1,5 +1,4 @@
 {
-  "bufferline.nvim": { "branch": "main", "commit": "c7492a76ce8218e3335f027af44930576b561013" },
   "catppuccin": { "branch": "main", "commit": "3020af75aae098a77737d91ee37c7147c8450d99" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-cmdline": { "branch": "main", "commit": "23c51b2a3c00f6abc4e922dbd7c3b9aca6992063" },
@@ -16,7 +15,6 @@
   "lualine.nvim": { "branch": "master", "commit": "32a7382a75a52e8ad05f4cec7eeb8bbfbe80d461" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "aa25b4153d2f2636c3b3a8c8360349d2b29e7ae3" },
   "mason.nvim": { "branch": "main", "commit": "b8c3fceed16d29a166cf73ce55358f13c9f6cfcc" },
-  "no-neck-pain.nvim": { "branch": "main", "commit": "25a41848edd5f8e5652e16f0ff9f948f2ff6d18e" },
   "nvim-cmp": { "branch": "main", "commit": "c49ad26e894e137e401b1d294948c46327877eaf" },
   "nvim-dap": { "branch": "master", "commit": "69b7c684cd42e60b48875c580e616a70bccfdbe7" },
   "nvim-dap-ui": { "branch": "master", "commit": "54365d2eb4cb9cfab0371306c6a76c913c5a67e3" },
