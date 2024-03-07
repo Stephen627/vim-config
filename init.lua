@@ -5,7 +5,7 @@ end
 pcall(includeSetup)
 
 require 'general'
-require 'plugins'
+require 'lazy-init'
 
 -- Ignore errors when trying to import the override file
 function includeOverride ()

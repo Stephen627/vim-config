@@ -9,7 +9,6 @@ local PromptMap = {
     ['Copy JS debug template'] = vim.fn.stdpath('config') .. '/debug/js.json',
 }
 
-
 local function writeContentsToFile (contents, filePath)
     local handle = io.open(filePath, 'w')
     io.output(handle)
@@ -64,6 +63,4 @@ function CopyTemplatePrompt ()
     )
 end
 
-require('legendary').keymap({
-    '<leader>dt', '<cmd>lua CopyTemplatePrompt()<cr>', description = 'Open copy debug template prompt'
-})
+vim.api.nvim_set_keymap('n', '<leader>dt', '<cmd>lua CopyTemplatePrompt()<cr>', { desc='Open copy debug template prompt' })

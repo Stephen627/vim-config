@@ -1,4 +1,5 @@
 vim.g.mapleader = ' '
+vim.opt.updatetime = 500
 
 -- Disabling showing the mode as this is handled by lualine
 vim.opt.showmode = false
@@ -47,7 +48,7 @@ vim.api.nvim_command('set mouse=')
 vim.opt.history = 400
 
 vim.opt.clipboard = 'unnamed'
-vim.opt.so = 7
+vim.opt.so = 200
 vim.opt.ruler = true
 vim.opt.cmdheight = 1
 vim.opt.textwidth = 120
@@ -71,29 +72,34 @@ vim.g.vim_markdown_folding_disabled = 1
 
 vim.opt.pastetoggle = '<F4>'
 
--- require('util.stop-it').setup({
---   mode = { "n", "v" },
---   keys = { "h", "j", "k", "l" },
---   limit = 5,
--- })
--- 
--- -- Stop using Ctrl + c all together
--- require('util.stop-it').setup({
---   mode = { "i" },
---   keys = { "<C-c>" },
---   limit = 1,
---   message = "Don't use Ctrl+c use Esc",
--- })
--- 
--- -- Never use arrow keys
--- require('util.stop-it').setup({
---   mode = { "i", "n", "v" },
---   keys = { "<Left>", "<Right>", "<Up>", "<Down>" },
---   limit = 1,
---   message = [[Don't use arrow keys.
---     h = Left
---     j = Down
---     k = Up
---     l = Right]],
---   ignoreFileTypes = {},
--- })
+vim.opt.title = true
+vim.opt.titlestring = "%<%F%=%l/%L - nvim"
+
+vim.api.nvim_set_keymap('n', 'gb', '<cmd>BufferlinePick<cr>', {desc='Go to another buffer, the buffers at the top of the window will show the character(s) to use'})
+vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>bnext<cr>', {desc='Go to the next buffer'})
+vim.api.nvim_set_keymap('n', '<C-h>', '<cmd>bprevious<cr>', {desc='Go to the previous buffer'})
+vim.api.nvim_set_keymap('n', '<leader>fp', '<cmd>Telescope projects<cr>', {desc='Change projects'})
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {desc='Find files'})
+vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<cr>', {desc='Grep files'})
+vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', {desc='Find buffer'})
+
+vim.api.nvim_set_keymap('n', '<leader><cr>', '<cmd>noh<cr>', {desc='Clears all highlighed text'})
+vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>Bdelete<cr>', {desc='Deletes the current buffer'})
+vim.api.nvim_set_keymap('n', '<leader>ss', '<cmd>setlocal spell!<cr>', {desc='Toggles spell checking on active buffer'})
+vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {desc='Exit insert, visual, or command mode'})
+vim.api.nvim_set_keymap('n', '<C-s>', '<cmd>w<cr>', {desc='Save current buffer'})
+
+
+require("util.references").setup({
+    anchor= "NW", -- Popup position ancho
+    relative = "cursor", -- Popup relative position
+    row = 1, -- Popup x position
+    col = 0, -- Popup y position
+    border = "rounded", -- Popup borderstyle
+    winblend = 0, -- Popup transaparency 0-100, where 100 is transparent
+    max_width = 120, -- Max width of the popup
+    max_height = 10, -- Max height of the popup
+    auto_choose = false, -- Go to reference if there is only one
+})
+
+vim.lsp.handlers["textDocument/references"] = require("util.references").reference_handler

@@ -1,20 +1,13 @@
 {
     "lsp": {
-        "sumneko_lua": {
+        "intelephense": {
+            "init_options": {
+                "licenceKey": "00FGVVRJXB9KSY0"
+            },
             "settings": {
-                "Lua": {
-                    "completion": {
-                        "keywordSnippet": "Disable"
-                    },
-                    "diagnostics": {
-                        "globals": [ "vim", "use" ],
-                        "disable": [ "lowercase-global" ]
-                    },
-                    "runtime": {
-                        "version": "LuaJIT",
-                        "path": []
-                    },
-                    "workspace.library": {
+                "intelephense": {
+                    "files": {
+                        "maxSize": 5000000
                     }
                 }
             }
